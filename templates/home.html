@@ -1,0 +1,18 @@
+<div ng-controller="MainController">
+    <div id="datetime">
+        <h1 ng-bind="date.raw | date: 'hh mm ss'"></h1>
+        <h2 ng-bind="date.raw | date: 'EEEE, MMMM yyyy'"></h2>
+    </div>
+    <div id="forecast">
+        <ul class="row list-unstyled">
+            <li ng-repeat="day in weather.forecast.forecastday" class="col-md-3">
+                <div ng-class="{true: 'today'}[$index == 0]">
+                    <img src="{{day.icon}}" ng-src="{{day.icon_url}}" />
+                    <h3>{{day.high.celsius}}</h3>
+                    <h4 ng-if="$index == 0">Now</h4>
+                    <h4 ng-if="$index != 0">{{day.date.weekday}}</h4>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
